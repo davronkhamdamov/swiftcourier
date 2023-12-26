@@ -1,19 +1,13 @@
 const { bot } = require("../core/bot");
-const { User } = require("../db/users");
-const { isUserActive } = require("./home");
+const {messages} = require("../lib/message");
 
 bot.start(async (ctx) => {
-    const { first_name, id } = ctx.from;
-    const getUser = await User.findOne({ user_id: id });
-    if (getUser) {
-        return isUserActive(ctx);
-    }
-    await ctx.reply(`Xurmatli ${first_name} bizning botimizga xush kelibsiz`, {
+    await ctx.reply(messages.start, {
         reply_markup: {
             keyboard: [
                 [
                     {
-                        text: "Ro'yxatdan o'tish",
+                        text: "Buyurtma berish 📦",
                     },
                     {
                         text: "Adminga yozish ❓",
