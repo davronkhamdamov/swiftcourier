@@ -1,0 +1,5 @@
+require("./category")
+require("./order_list")
+require("./users")
+require("./products")
+require("./ordered_list")
